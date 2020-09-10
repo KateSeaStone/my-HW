@@ -1,0 +1,960 @@
+@charset "UTF-8";
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+/* CSS-переменные проекта */
+:root {
+  --primery-text-color: #757575;
+  --title-text-color: #212121;
+  --accent-color: #2196f3;
+  --footer-contact-color: rgba(255, 255, 255, 0.6);
+  --primery-white-color: #ffffff;
+  --portfolio-button-color: #F5F4FA;
+  --hero-footer-background-color: #2F303A
+;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  /* outline: 1px solid yellow; */
+}
+
+img {
+  display: block;
+}
+
+address {
+  font-style: normal;
+}
+
+button {
+  cursor: pointer;
+}
+
+.link, .phone, .hero-button, .social-list-item-link,
+.filter-button, .clients-logo-svg, .modal-close-btn-svg,
+.modal-form-btn, .modal-form-input {
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== Основные стили для страниц ========== */
+.body {
+  background-color: var(--primery-white-color);
+  color: var(--primery-text-color);
+  font-family: Roboto, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.conteiner {
+  margin: 0 auto;
+  width: 1200px;
+  padding: 0 15px;
+}
+
+/* убираем маркеры для списка */
+.list {
+  list-style: none;
+}
+
+.social-list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.social-list-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.social-list-item-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.social-list-item-svg {
+  width: 20px;
+  height: 20px;
+  fill: #AFB1B8;
+}
+
+.social-list-item-link:hover {
+  background-color: var(--accent-color);
+}
+
+.social-list-item-link:hover .social-list-item-svg {
+  fill: var(--primery-white-color);
+}
+
+.footer .social-list-item-svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--primery-white-color);
+}
+
+.footer .social-list-item-link {
+  background-color: var(--primery-text-color);
+}
+
+.footer .social-list-item-link:hover {
+  background-color: var(--accent-color);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* общий div для модальных окон */
+.pop-ups {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 500ms ease;
+}
+
+/* поддерживающий div для модального окна, по
+  которому центрируем модальное окно */
+.pop-ups_popup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden auto;
+  padding: 20px 0;
+  display: flex;
+}
+
+.pop-ups_modal {
+  max-width: 528px;
+  width: 100%;
+  min-height: 581px;
+  padding: 40px;
+  position: relative;
+  margin: auto;
+  background-color: var(--primery-white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transform: translateY(0) scale(1) rotate(720deg);
+  transition: all 750ms ease;
+  transition-delay: 1s;
+}
+
+.pop-ups.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 1s;
+}
+
+.is-hidden .pop-ups_modal {
+  transform: translateY(-200%) scale(0.4);
+  /* transition: all 1s ease; */
+  transition-delay: 0s;
+}
+
+.modal-close-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 8px;
+  top: 8px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: var(--primery-white-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-close-btn-svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--title-text-color);
+}
+
+.modal-close-btn:hover .modal-close-btn-svg {
+  fill: var(--accent-color);
+}
+
+.modal-form-title {
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: var(--title-text-color);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-form-field {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.modal-form-users-info {
+  margin-bottom: 5px;
+}
+
+.modal-form-input {
+  width: 100%;
+  height: 40px;
+  padding-left: 42px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.167;
+  letter-spacing: 0.01em;
+  color: var(--primery-text-color);
+}
+
+.modal-form-input-icon-svg {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(0%);
+  width: 18px;
+  height: 18px;
+  fill: var(--title-text-color);
+  pointer-events: none;
+}
+
+.modal-form-input:focus + .modal-form-input-icon-svg {
+  fill: var(--accent-color);
+}
+
+.modal-form-input:focus,
+.modal-form-message:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.modal-form-message-text {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.167;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+  cursor: text;
+}
+
+.modal-form-message {
+  width: 100%;
+  height: 120px;
+  padding: 12px 16px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  resize: none;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.167;
+  letter-spacing: 0.01em;
+  color: var(--primery-text-color);
+}
+
+.modal-form-label-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.modal-form-label-checkbox::before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 15px;
+  outline: 0.2px solid var(--title-text-color);
+  background-color: var(--primery-white-color);
+  margin-right: 7px;
+}
+
+.modal-form-label-checkbox-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  margin-right: 4px;
+}
+
+.modal-form-checkbox:checked + .modal-form-label-checkbox {
+  color: var(--accent-color);
+}
+
+.modal-form-checkbox:checked + .modal-form-label-checkbox::before {
+  background-image: url(../images/mod_window/icon-check.svg);
+}
+
+.modal-form-label-checkbox-link {
+  color: var(--accent-color);
+}
+
+.modal-form-btn {
+  width: 200px;
+  height: 50px;
+  border: transparent;
+  margin: auto;
+  background: var(--accent-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.87;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: var(--primery-white-color);
+  outline: none;
+}
+
+.header {
+  background-color: var(--primery-white-color);
+  border: 1px solid #ECECEC;
+}
+
+.header .conteiner {
+  display: flex;
+  align-items: center;
+}
+
+/* ========== Панель навигации =========== */
+.header .navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-list {
+  display: flex;
+}
+
+.navigation-list-item:not(:last-child) {
+  margin-right: 50px;
+}
+
+.navigation-list-item .link {
+  display: inline-block;
+}
+
+.navigation-list-item {
+  width: max-content;
+}
+
+.header .link {
+  color: var(--title-text-color);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 25px 0;
+  position: relative;
+}
+
+.link.current::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  display: block;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0;
+}
+
+.header .link:hover,
+.header .link:focus {
+  color: var(--accent-color);
+}
+
+.link.current:hover::after {
+  color: var(--accent-color);
+}
+
+.header .link.current {
+  color: var(--accent-color);
+}
+
+.link:hover.current::after {
+  background-color: var(--accent-color);
+}
+
+/* ========== Logo ========== */
+.logo {
+  margin-right: 93px;
+  color: var(--title-text-color);
+  font-family: Raleway;
+  font-weight: 700;
+  font-size: 26px;
+  text-decoration: none;
+  line-height: 1.19;
+}
+
+.logo > span {
+  color: var(--accent-color);
+}
+
+.logo {
+  display: flex;
+}
+
+/*=========== Контакты (header) ===========*/
+.contact-list .phone {
+  color: var(--primery-text-color);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.contact-list .phone:hover,
+.contact-list .phone:focus {
+  color: var(--accent-color);
+}
+
+.contact-list .link {
+  color: var(--primery-text-color);
+}
+
+.contact-list .link:hover,
+.contact-list .link:focus {
+  color: var(--accent-color);
+}
+
+.contact-list {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.contact-list-item {
+  display: flex;
+  align-items: center;
+}
+
+.contact-list-item .link,
+.contact-list-item .phone {
+  display: flex;
+  align-items: center;
+}
+
+.contact-list-item:not(:last-child) {
+  margin-right: 50px;
+}
+
+.contact-list-item-svg {
+  fill: var(--primery-text-color);
+  margin-right: 10px;
+}
+
+.svg-email {
+  width: 16px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.svg-phone {
+  width: 10px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.contact-list .phone:hover .contact-list-item-svg {
+  fill: var(--accent-color);
+}
+
+.contact-list .link:hover .contact-list-item-svg {
+  fill: var(--accent-color);
+}
+
+/* Герой */
+.hero-title {
+  color: var(--primery-white-color);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.36;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.hero-button {
+  border-radius: 4px;
+  border: transparent;
+  font-family: inherit;
+  color: var(--primery-white-color);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.87;
+  letter-spacing: 0.06em;
+  background-color: var(--accent-color);
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 32px;
+  min-width: 200px;
+  height: 50px;
+}
+
+.hero-button:hover {
+  color: var(--accent-color);
+  background-color: var(--primery-white-color);
+}
+
+.hero-button:focus {
+  outline: none;
+}
+
+.section-hero {
+  display: flex;
+  min-height: 600px;
+  max-width: 1600px;
+  /* padding-top: 50px; */
+  padding-bottom: 50px;
+  padding-right: 15px;
+  padding-left: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 94px;
+  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/hero/Img.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.section-hero-box {
+  text-align: center;
+  max-width: 696px;
+}
+
+/* ========== Наши особенности ========== */
+.section-features .conteiner {
+  display: flex;
+}
+
+.section-features {
+  background-color: #E5E5E5;
+}
+
+.features-list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 94px;
+}
+
+.position:not(:last-child) {
+  margin-right: 30px;
+}
+
+.features-list-title {
+  margin-bottom: 10px;
+  color: var(--title-text-color);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.features-list-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+}
+
+.features-list-item-antenna::before {
+  content: "";
+  width: 270px;
+  height: 120px;
+  border-radius: 4px;
+  background-color: #F5F4FA;
+  display: block;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/our_features/antenna.svg);
+}
+
+.features-list-item-clock::before {
+  content: "";
+  width: 270px;
+  height: 120px;
+  border-radius: 4px;
+  background-color: #F5F4FA;
+  display: block;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/our_features/clock.svg);
+}
+
+.features-list-item-diagram::before {
+  content: "";
+  width: 270px;
+  height: 120px;
+  border-radius: 4px;
+  background-color: #F5F4FA;
+  display: block;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/our_features/diagram.svg);
+}
+
+.features-list-item-astronaut::before {
+  content: "";
+  width: 270px;
+  height: 120px;
+  border-radius: 4px;
+  background-color: #F5F4FA;
+  display: block;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/our_features/astronaut.svg);
+}
+
+/* ============ Чем мы занимаемся ================*/
+.section-wwd {
+  margin-bottom: 94px;
+}
+
+.section-wwd-title {
+  margin-bottom: 50px;
+  color: var(--title-text-color);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.17;
+  text-align: center;
+}
+
+.section-wwd-list {
+  display: flex;
+}
+
+.section-wwd-list-item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.section-wwd-list-item {
+  position: relative;
+}
+
+.box-title {
+  color: var(--primery-white-color);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.142;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.box-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 370px;
+  min-height: 70px;
+  background-color: rgba(52, 53, 64, 0.8);
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+}
+
+/* Наша команда */
+.section-team {
+  padding-top: 94px;
+  padding-bottom: 30px;
+  margin-bottom: 94px;
+  background-color: var(--portfolio-button-color);
+}
+
+.section-team-title {
+  margin-bottom: 50px;
+  color: var(--title-text-color);
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  line-height: 1.19;
+  text-align: center;
+}
+
+.team-list {
+  display: flex;
+}
+
+.team-list-item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.team-list-item {
+  text-align: center;
+  background-color: var(--primery-white-color);
+  border-radius: 0px 0px 4px 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.team-img {
+  margin-bottom: 30px;
+}
+
+.team-title {
+  margin-bottom: 10px;
+}
+
+.team-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.19;
+  margin-bottom: 30px;
+}
+
+/* ========== Постоянные клиенты ========== */
+.section-our-clients {
+  margin-bottom: 94px;
+  text-align: center;
+}
+
+.section-our-clients-title {
+  color: var(--title-text-color);
+  margin-bottom: 50px;
+}
+
+.our-clients-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.our-clients-list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 90px;
+  background-color: var(--primery-white-color);
+  border: 1px solid #AFB1B8;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.clients-logo-svg {
+  fill: #AFB1B8;
+}
+
+.our-clients-list-item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.our-clients-list-item:hover .clients-logo-svg {
+  fill: var(--accent-color);
+}
+
+.our-clients-list-item:hover {
+  border: 1px solid var(--accent-color);
+}
+
+/* ========== Футер ========= */
+/* =========================== */
+.footer .logo {
+  color: var(--primery-white-color);
+  font-family: Raleway;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.19;
+  text-decoration: none;
+  margin: 0 0 20px;
+}
+
+.footer .logo > span {
+  color: var(--accent-color);
+}
+
+.address-map {
+  color: var(--primery-white-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  margin-bottom: 9px;
+}
+
+.footer-contact .link,
+.footer-contact .phone {
+  color: var(--primery-text-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.footer-contact .link:hover,
+.footer-contact .phone:hover,
+.footer-contact .link:focus,
+.footer-contact .phone:focus {
+  color: var(--accent-color);
+}
+
+.footer {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.footer .conteiner {
+  display: flex;
+  margin-left: auto;
+}
+
+.footer-contact-info {
+  margin-right: 70px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-contact-item:not(:last-child) {
+  margin-bottom: 9px;
+}
+
+.footer {
+  background-color: var(--hero-footer-background-color);
+}
+
+.footer-social {
+  margin-right: 93px;
+}
+
+.footer-social-title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.142;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--primery-white-color);
+  margin-bottom: 20px;
+}
+
+/* ===========Подпишитесь на рассылку=========== */
+.mail-box {
+  display: flex;
+  width: 570px;
+  height: 86px;
+  margin-bottom: 94px;
+  flex-wrap: wrap;
+}
+
+.mail-title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.143;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--primery-white-color);
+  margin-bottom: 20px;
+}
+
+.mail-form {
+  width: 570px;
+  height: 50px;
+  display: flex;
+}
+
+.mail-form-input {
+  padding: 0 16px;
+  width: 358px;
+  height: 50px;
+  border: none;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  margin-right: 12px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: var(--primery-white-color);
+}
+
+.mail-form-input:focus {
+  outline: none;
+  border: 1px solid var(--primery-white-color);
+}
+
+.mail-button {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  border: transparent;
+  font-family: inherit;
+  color: var(--primery-white-color);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.87;
+  letter-spacing: 0.06em;
+  background-color: var(--accent-color);
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 29px;
+  min-width: 200px;
+  height: 50px;
+}
+
+.mail-button:focus {
+  outline: none;
+  border: 1px solid var(--primery-white-color);
+}
+
+.mail-button::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  color: var(--primery-white-color);
+  background-image: url(../images/sociallink/icon-send.svg);
+  background-size: contain;
+  margin-left: 10px;
+}
+
+/* ================End футера=============== */
+/*# sourceMappingURL=main.css.map */

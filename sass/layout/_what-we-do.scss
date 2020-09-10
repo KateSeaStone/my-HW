@@ -1,0 +1,49 @@
+/* ============ Чем мы занимаемся ================*/
+.section-wwd {
+  margin-bottom: 94px;
+  }
+
+.section-wwd-title {
+  margin-bottom: 50px;
+  color: var(--title-text-color);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.17;
+  text-align: center;
+  }
+
+  .section-wwd-list {
+    display: flex;
+  }
+
+  .section-wwd-list-item:not(:last-child) {
+    margin-right: 30px;
+  }
+
+.section-wwd-list-item {
+  position: relative;
+}
+
+.box-title {
+  color: var(--primery-white-color);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.142;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;  
+}
+
+.box-img {
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+width: 370px;
+min-height: 70px;
+background-color: rgba(52, 53, 64, 0.8);
+position: absolute;
+z-index: 1;
+bottom: 0;
+left: 0;
+}

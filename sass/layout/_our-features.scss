@@ -1,0 +1,86 @@
+/* ========== Наши особенности ========== */
+
+.section-features .conteiner {
+  display: flex;
+}
+.section-features {
+  background-color: #E5E5E5;;
+}
+
+.features-list {
+display: flex;
+align-items: center;
+margin-bottom: 94px;
+}
+
+.position:not(:last-child) {
+  margin-right: 30px;
+}
+
+.features-list-title {
+  margin-bottom: 10px;
+  color: var(--title-text-color);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.features-list-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+}
+
+.features-list-item-antenna::before {
+content: "";  
+width: 270px;
+height: 120px;
+border-radius: 4px;
+background-color: #F5F4FA;
+display: block;
+margin-bottom: 30px;
+background-repeat: no-repeat;
+background-position: center;
+background-image: url(../images/our_features/antenna.svg)
+} 
+
+.features-list-item-clock::before {
+content: "";  
+width: 270px;
+height: 120px;
+border-radius: 4px;
+background-color: #F5F4FA;
+display: block;
+margin-bottom: 30px;
+background-repeat: no-repeat;
+background-position: center;
+background-image: url(../images/our_features/clock.svg)
+  } 
+
+  .features-list-item-diagram::before {
+  content: "";  
+  width: 270px;
+  height: 120px;
+  border-radius: 4px;
+  background-color: #F5F4FA;
+  display: block;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/our_features/diagram.svg)
+  } 
+
+    .features-list-item-astronaut::before {
+  content: "";  
+  width: 270px;
+  height: 120px;
+  border-radius: 4px;
+  background-color: #F5F4FA;
+  display: block;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/our_features/astronaut.svg)
+  } 
